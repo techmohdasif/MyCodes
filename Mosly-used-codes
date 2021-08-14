@@ -1,0 +1,25 @@
+// 404 code
+
+<?php
+
+header("HTTP/1.1 301 Moved Permanently");
+
+header("Location: ".get_bloginfo('url'));
+
+exit();
+
+?>
+
+// Wordpress cron
+
+define('DISABLE_WP_CRON', true);
+
+wget -q -O - https://tassco.org/wp-cron.php?doing_wp_cron >/dev/null 2>&1	
+
+// ContenetCrawler Regex
+
+<p>Also Read – <a href="https://hubsadda.com/5-ways-to-drive-organic-traffic-to-your-website/" target="_blank" rel="noreferrer noopener">5 Ways to Drive Organic Traffic to Your Website</a></p>
+
+<p>Also Read(.*)p>
+
+ 
