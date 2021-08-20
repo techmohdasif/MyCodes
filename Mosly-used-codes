@@ -23,3 +23,17 @@ wget -q -O - https://tassco.org/wp-cron.php?doing_wp_cron >/dev/null 2>&1
 <p>Also Read(.*)p>
 
  
+// delete all post attachment from wordpress
+
+
+1) 
+DELETE FROM wp_postmeta
+WHERE post_id IN
+(
+SELECT id
+FROM wp_posts
+WHERE post_type = 'attachment'
+)
+;
+ 
+2)  DELETE FROM wp_posts WHERE post_type = 'attachment'
