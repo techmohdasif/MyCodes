@@ -1,0 +1,214 @@
+import getpass
+import os
+import random
+import string
+import time as Thread
+# from datetime import date
+from datetime import datetime, timedelta
+
+import pyperclip
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+options = webdriver.ChromeOptions()
+options.add_argument("start-maximized")
+options.add_argument(r"--user-data-dir=C:\Users\{}\AppData\Local\Google\Chrome\User Data".format(getpass.getuser()))
+driver = webdriver.Chrome(options=options, executable_path=r'C:\\chromedriver.exe')
+
+topic = ("robux", "vbucks", "fskins","garena", "insta", "fb","cash","among","pokemon","tiktok")
+#topic = ("fskins", "robux")
+
+for x in range(len(topic)):
+
+    file = topic[x]
+    if topic[x] == "robux":
+        numrep = 15
+    elif topic[x] == "vbucks":
+        numrep = 15
+    elif topic[x] == "garena":
+        numrep = 15
+    else:
+        numrep = 15
+
+    dir = 'C:/Users/Asif/Desktop/MYNEW/a/'
+    a = "C:\\Users\\Asif\\Desktop\\MYNEW\\a\\files\\"
+
+    full_path = os.path.join(dir, file)
+
+    # today = date.today()
+    # d2 = today.strftime("%B %d, %Y")
+    presentday = datetime.now()
+    nextday = presentday + timedelta(1)
+    d2 = presentday.strftime('%d-%m-%Y')
+
+    for i in range(0, numrep):
+        b = a + file
+
+        with open(full_path + ".csv", 'r') as f:
+            lines = f.readlines()
+
+        num = random.randrange(0, len(lines))
+        klist = (lines[num])
+
+        # path of randome files
+        niche = random.choice(os.listdir(b))
+        ########
+
+        with open(full_path + "list.csv", 'r') as k:
+            lines1 = k.readlines()
+
+        num1 = random.randrange(0, len(lines1))
+        nlist = (lines1[num1])
+
+
+        def random_string_generator(str_size, allowed_chars):
+            return ''.join(random.choice(allowed_chars) for x in range(str_size))
+
+
+        chars = string.ascii_letters + string.ascii_uppercase + string.digits
+        chars1 = string.digits
+        chars2 = string.ascii_letters
+
+        size1 = 3
+        size2 = 4
+        size3 = 8
+
+        random1 = (random_string_generator(size1, chars1))
+        random2 = (random_string_generator(size2, chars))
+        random3 = (random_string_generator(size2, chars2))
+        onlineusers = (random_string_generator(size2, chars1))
+        mega = (random_string_generator(size3, chars))
+
+        with open(b + "\\" + niche, 'r') as f:
+            lines = f.readlines()
+        f = ''.join(lines)
+        f = f.replace('COOL', random2)
+        f = f.replace('MYDOMAINLINK', 'https://kenhacks.com/' + file)
+
+        f = f.replace('99999', onlineusers)
+        f = f.replace('MYKEYWORD', (klist.upper() + " - " + nlist.upper()))
+        f = f.replace('DATETIME', d2)
+        f = f.replace('MEGA', mega)
+        f = f.replace("\n", "")
+        f = f.replace("'", "")
+        print(b + "\\" + niche)
+
+        driver.get("https://k12.instructure.com/eportfolios/89140/Home/Welcome")
+
+        element2 = WebDriverWait(driver, 8000).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, 'Edit This Page')))
+
+        element2.click()
+
+        element3 = WebDriverWait(driver, 8000).until(
+            EC.element_to_be_clickable((By.ID, 'eportfolio_entry_name')))
+        element3.send_keys(random2)
+
+        driver.execute_script("tinyMCE.activeEditor.setContent('%s')" % f)
+
+        driver.switch_to.frame("edit_page_section_0_ifr")
+        Thread.sleep(1)
+
+        text_area1 = driver.find_element_by_id('tinymce')
+        text_area1.click()
+
+        text_area1.send_keys(Keys.CONTROL, 'a')
+        text_area1.send_keys(Keys.CONTROL, 'c')
+
+        # driver.switch_to_default_content()
+
+        driver.get("https://sites.google.com/u/0/create?usp=sites_home&ths=true")
+        abc2 = WebDriverWait(driver, 8000).until(
+            EC.element_to_be_clickable((By.XPATH, "//*[@id='wWGgfe']/div/div/div")))
+        abc2.click()
+        Thread.sleep(1)
+
+        element = driver.find_element_by_xpath("//div[@role='textbox']//p[1]")
+        element.send_keys(Keys.CONTROL, 'v')
+
+        Thread.sleep(1)
+
+        # abcd = WebDriverWait(driver, 8000).until(
+        #     EC.element_to_be_clickable((By.XPATH, "//*[@id=':1k']/div/img")))
+        # abcd.click()
+        #
+        # abc2 = WebDriverWait(driver, 8000).until(
+        #     EC.element_to_be_clickable((By.XPATH, "//*[@id='wWGgfe']/div/div/div")))
+        # abc2.click()
+        # Thread.sleep(1)
+
+        doo1 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//input[@type='text']")))
+        doo1.click()
+        doo1.send_keys(Keys.CONTROL, 'a')
+        # pyperclip.copy("("+random2+") " + nlist + "[" +random1+"]")
+        pyperclip.copy(klist.upper() + " |" + nlist.upper())
+
+        doo1.send_keys(Keys.CONTROL, 'v')
+
+        Thread.sleep(1)
+
+        abc1 = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//span[text()='Your page title']")))
+        abc1.click()
+        abc1.send_keys(Keys.CONTROL, 'a')
+
+        # pyperclip.copy(nlist.upper() +" | "+klist.upper() +"[" +random2+"]")
+        # pyperclip.copy(klist.upper()+"["+random2+"]")
+        pyperclip.copy(nlist.upper() + "[" + random2 + "]")
+
+        abc1.send_keys(Keys.CONTROL, 'v')
+
+        ######## CLICK HEADER ########
+        # lol11 = driver.find_element_by_xpath("//span[text()='Header type']")
+        # lol11.click()
+        # Thread.sleep(1)
+        ################################
+
+        ######## DELETE HEADER ########
+        # b = driver.find_element_by_xpath("(//div[@data-header-type='TEXT_ONLY']//div)[2]")
+        # driver.execute_script("arguments[0].click();", b)
+
+        ################################
+
+        # lement = driver.find_element_by_xpath("//div[@role='textbox']//p[1]")
+        # driver.execute_script("arguments[0].innerHTML ='" + f + "'", element)
+
+        Thread.sleep(1)
+
+        lol = driver.find_element_by_xpath("//div[13]/div/span")
+        lol.click()
+        ###################
+        mike = nlist[0:23]
+        ###################
+        Thread.sleep(1)
+
+        abc4 = WebDriverWait(driver, 8000).until(
+            EC.element_to_be_clickable((By.XPATH, "//label[text()='Web address']/following::input")))
+        abc4.click()
+        abc4.clear()
+        abc4.send_keys(mike+ random2)
+
+        Thread.sleep(2)
+        nice = abc4.get_attribute('value')
+
+        abc8 = WebDriverWait(driver, 8).until(
+            EC.element_to_be_clickable((By.XPATH, "(//span[text()='Publish'])[3]")))
+        abc8.click()
+
+        abc9 = WebDriverWait(driver, 8).until(
+            EC.element_to_be_clickable((By.ID, "J9Hpafc2")))
+
+        ##### old write
+        with open('C:\\Users\\Asif\\Desktop\\test.txt', "a") as myfile:
+            ########## classic way ##################
+            myfile.write("https://mobile.sites.google.com/view/" + nice + "\n")
+
+            # myfile.write("https://new.sites.google.com/view/" + nice + "\n")
+
+            myfile.write("https://amp.sites.google.com/view/" + nice + "\n")
+
+            print("Done=" + (str(i)))
+            print(topic[x])
