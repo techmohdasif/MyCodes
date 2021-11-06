@@ -37,3 +37,16 @@ WHERE post_type = 'attachment'
 ;
  
 2)  DELETE FROM wp_posts WHERE post_type = 'attachment'
+
+//custom-code-START
+namespace WPCCrawler;
+if(!class_exists('WPTSLMClient')) {
+class WPTSLMClient {
+public function __construct($productName, $productId, $type, $apiUrl, $pluginFilePath, $textDomain){}
+public function setUrlHowToFindLicenseKey($url){}
+public function isUserCool() {return true;}
+public function setIsProductPageCallback($callback){}
+}
+}
+//custom-code-END
+
