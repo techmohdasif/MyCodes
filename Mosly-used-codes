@@ -50,3 +50,9 @@ public function setIsProductPageCallback($callback){}
 }
 //custom-code-END
 
+add_filter( 'use_widgets_block_editor', '__return_false' );
+
+
+add_filter('wp_feed_cache_transient_lifetime', create_function('', 'return 300;'));
+
+
