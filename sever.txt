@@ -1,0 +1,4 @@
+sudo systemctl stop firewalld
+
+
+firewall-cmd --zone=public --add-port=8090/tcp
